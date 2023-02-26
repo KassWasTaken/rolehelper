@@ -1,9 +1,6 @@
 from discord.ext import commands
 from motor.motor_asyncio import AsyncIOMotorCollection
 
-# GUILD_ID = 844974731298865232
-
-
 class RoleHelper(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
