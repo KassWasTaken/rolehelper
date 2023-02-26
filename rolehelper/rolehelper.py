@@ -32,7 +32,7 @@ async def get_thread_log(self, ctx):
     return await self.bot.api.db.logs.find_one({"channel_id": str(ctx.channel.id)})
         
 async def assign_role(self, ctx, user_id, role_id):
-    guild = ctx.guild.id
+    guild = ctx.guild
     member = await guild.fetch_member(user_id)
     role = guild.get_role(int(role_id))
     await member.add_roles(role)
@@ -40,7 +40,7 @@ async def assign_role(self, ctx, user_id, role_id):
 
 
 async def remove_role(self, ctx, user_id, role_id):
-    guild = ctx.guild.id
+    guild = ctx.guild
     member = await guild.fetch_member(user_id)
     role = guild.get_role(int(role_id))
     await member.remove_roles(role)
