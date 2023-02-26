@@ -9,7 +9,7 @@ class RoleHelper(commands.Cog):
     Assigns the given role to the user
     """
     @commands.command(name="addrole")
-    @commands.has_role("Modmail Access")
+    @commands.has_role("Modmail")
     async def addrole(self, ctx, *, message):
         threadLog = await get_thread_log(self, ctx)
         user_id = threadLog['recipient']['id']
@@ -20,7 +20,7 @@ class RoleHelper(commands.Cog):
     Removes the given role from the user
     """
     @commands.command(name="removerole")
-    @commands.has_role("Modmail Access")
+    @commands.has_role("Modmail")
     async def removerole(self, ctx, *, message):
         threadLog = await get_thread_log(self, ctx)
         user_id = threadLog['recipient']['id']
