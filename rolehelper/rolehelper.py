@@ -32,21 +32,19 @@ async def get_thread_log(self, ctx):
     return await self.bot.api.db.logs.find_one({"channel_id": str(ctx.channel.id)})
         
 async def assign_role(self, ctx, user_id, role_id):
-    if ctx.guild:
-        guild = ctx.guild
-        member = await guild.fetch_member(user_id)
-        role = guild.get_role(int(role_id))
-        await member.add_roles(role)
-        await ctx.send("Assigning " + str(role) + " to " + str(member))
+    guild = self.bot.get_guild("991798739478003722")
+    member = await guild.fetch_member(user_id)
+    role = guild.get_role(int(role_id))
+    await member.add_roles(role)
+    await ctx.send("Assigning " + str(role) + " to " + str(member))
 
 
 async def remove_role(self, ctx, user_id, role_id):
-    if ctx.guild:
-        guild = ctx.guild
-        member = await guild.fetch_member(user_id)
-        role = guild.get_role(int(role_id))
-        await member.remove_roles(role)
-        await ctx.send("Removing " + str(role) + " from " + str(member))
+    guild = self.bot.get_guild("991798739478003722")
+    member = await guild.fetch_member(user_id)
+    role = guild.get_role(int(role_id))
+    await member.remove_roles(role)
+    await ctx.send("Removing " + str(role) + " from " + str(member))
    
 def setup(bot):
     bot.add_cog(RoleHelper(bot))
